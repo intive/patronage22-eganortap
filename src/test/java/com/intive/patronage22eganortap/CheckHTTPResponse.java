@@ -1,4 +1,4 @@
-package pl.intive.patronage22eganortap;
+package com.intive.patronage22eganortap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

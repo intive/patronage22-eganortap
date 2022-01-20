@@ -19,6 +19,8 @@ Option B)
 2. Type the address of the repository.
 3. Press Clone
 4. If needed `Intelij` will guide you with additional setting.
+
+To run in in the terminal go to the projects directory and type: `mvn spring-boot:run`
  
 
 
