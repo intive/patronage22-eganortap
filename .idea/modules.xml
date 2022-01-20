@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/patronage22-eganortap.iml" filepath="$PROJECT_DIR$/.idea/patronage22-eganortap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/patronage22-eganortap.iml" filepath="$PROJECT_DIR$/patronage22-eganortap.iml" />
     </modules>
   </component>
 </project>
