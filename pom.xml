@@ -77,6 +77,10 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${project.build.directory}/jacoco-ut.exec</destFile>
+                            <propertyName>surefire.jacoco.args</propertyName>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>default-prepare-agent-integration</id>
@@ -95,6 +99,9 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/jacoco-ut.exec</dataFile>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>default-report-integration</id>
@@ -102,6 +109,9 @@
                         <goals>
                             <goal>report-integration</goal>
                         </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>merge-unit-and-integration</id>
@@ -164,14 +174,17 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <argLine>@{failsafe.jacoco.args}</argLine>
-                    <includes>**/*LayerTest</includes>
-                    <includes>**/*ITTest</includes>
+                    <includes>
+                        <include>**/*LayerTest.java</include>
+                        <include>**/*ITTest.java</include>
+                    </includes>
                 </configuration>
                 <executions>
                     <execution>
                         <id>default-integration-test</id>
                         <goals>
                             <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
