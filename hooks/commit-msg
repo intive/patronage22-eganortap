@@ -3,7 +3,7 @@
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 JIRA_TICKET=$(echo "$BRANCH_NAME" | sed -n 's/.*\///p')
 
-pattern="^$JIRA_TICKET"
+pattern="^$JIRA_TICKET: "
 
 msg="Aborting commmit - message doesn't match pattern!"
 
