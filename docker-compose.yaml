@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  database:
+    image: postgres:14.1-alpine
+    container_name: patronageapp2022-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: superStrongPassword;
+      POSTGRES_DB: patronageDb
+    volumes:
+      - type: volume
+        source: patronageapp2022-postgres-data
+        target: /patronage22-eganortap
+volumes:
+  patronageapp2022-postgres-data:
