@@ -1,6 +1,8 @@
 package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -15,7 +17,8 @@ import java.util.List;
 public class Poll implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poll_gen")
+    @SequenceGenerator(name = "poll_gen", sequenceName = "poll_seq")
     @Column(name = "PK_id", updatable = false, nullable = false)
     private Long id;
 

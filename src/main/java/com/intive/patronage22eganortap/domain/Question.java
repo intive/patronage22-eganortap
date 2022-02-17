@@ -14,7 +14,8 @@ import java.util.Set;
 public class Question implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_gen")
+    @SequenceGenerator(name = "question_gen", sequenceName = "question_seq")
     @Column(name = "PK_id", updatable = false, nullable = false)
     private Long id;
 

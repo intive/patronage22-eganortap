@@ -13,7 +13,8 @@ import java.io.Serializable;
 public class PossibleAnswer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "possible_answer_gen")
+    @SequenceGenerator(name = "possible_answer_gen", sequenceName = "possible_answer_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
 
