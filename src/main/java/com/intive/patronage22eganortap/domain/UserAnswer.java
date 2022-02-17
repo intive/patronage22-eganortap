@@ -13,7 +13,8 @@ import java.io.Serializable;
 public class UserAnswer implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_answer_gen")
+    @SequenceGenerator(name = "user_answer_gen", sequenceName = "user_answer_seq")
     @Column(name = "PK_id", updatable = false, nullable = false)
     private Long id;
 
