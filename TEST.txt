@@ -4,3 +4,4 @@ trzecia linia
 czwarta linia
 piata linia tutaj dodatkowo :) --amend
 szósta linia (removed for conflict) ppp jakas tam zmiana
+i dodJEMY W RAMACH BUGfIX
