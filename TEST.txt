@@ -3,4 +3,4 @@ druga linia
 trzecia linia
 czwarta linia
 piata linia tutaj dodatkowo :) --amend
-szósta linia (removed for conflict)
+szósta linia (removed for conflict) ppp jakas tam zmiana
