@@ -2,5 +2,5 @@ pierwsza linia
 druga linia
 trzecia linia
 czwarta linia
-piata linia
+piata linia tutaj dodatkowo :) --amend
 szósta linia ddd + ppp
