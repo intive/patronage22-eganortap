@@ -8,8 +8,7 @@ import com.intive.patronage22eganortap.repository.PollRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -33,7 +32,7 @@ class RepositoryLayerTest {
                 .status("status")
                 .isPublic(true)
                 .timer(123)
-                .startDate(new Date(10000L))
+                .startDate(LocalDate.of(2012, 12, 12))
                 .build();
 
         Question sampleQuestion = Question.builder()

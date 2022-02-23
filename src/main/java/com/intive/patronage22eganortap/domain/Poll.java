@@ -3,7 +3,7 @@ package com.intive.patronage22eganortap.domain;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -22,9 +22,9 @@ public class Poll implements Serializable {
     private String name;
     private String description;
     private String email;
-    private Date creationDate;
+    private LocalDate creationDate;
     private int timer;
-    private Date startDate;
+    private LocalDate startDate;
     private String link;
     private String status;
     private boolean isPublic;
