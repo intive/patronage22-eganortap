@@ -17,11 +17,9 @@ public class PossibleAnswer implements Serializable {
     @SequenceGenerator(name = "possible_answer_gen", sequenceName = "possible_answer_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
-
     private String content;
-
     @ManyToOne
-    @JoinColumn(name = "FK_Question_id")
+    @JoinColumn(name = "question_id")
     private Question question;
 
     @Override

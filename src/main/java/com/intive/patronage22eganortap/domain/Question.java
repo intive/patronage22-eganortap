@@ -16,18 +16,14 @@ public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_gen")
     @SequenceGenerator(name = "question_gen", sequenceName = "question_seq")
-    @Column(name = "PK_id", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private Long id;
-
     private String content;
-
     @ManyToOne
-    @JoinColumn(name = "FK_Poll_id")
+    @JoinColumn(name = "poll_id")
     private Poll poll;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
     private Set<UserAnswer> userAnswers;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
     private Set<PossibleAnswer> possibleAnswers;
 

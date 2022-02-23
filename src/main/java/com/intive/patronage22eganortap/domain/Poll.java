@@ -1,8 +1,6 @@
 package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -19,27 +17,17 @@ public class Poll implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poll_gen")
     @SequenceGenerator(name = "poll_gen", sequenceName = "poll_seq")
-    @Column(name = "PK_id", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private Long id;
-
     private String name;
-
     private String description;
-
     private String email;
-
     private Date creationDate;
-
     private int timer;
-
     private Date startDate;
-
     private String link;
-
     private String status;
-
     private boolean isPublic;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "poll", orphanRemoval = true)
     private List<Question> questions;
 

@@ -15,17 +15,14 @@ public class UserAnswer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_answer_gen")
     @SequenceGenerator(name = "user_answer_gen", sequenceName = "user_answer_seq")
-    @Column(name = "PK_id", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private Long id;
-
     private String sessionId;
-
     @ManyToOne
-    @JoinColumn(name = "FK_Question_id")
+    @JoinColumn(name = "question_id")
     private Question question;
-
     @OneToOne
-    @JoinColumn(name = "FK_Possible_answers_id")
+    @JoinColumn(name = "possible_answer_id")
     private PossibleAnswer possibleAnswer;
 
     @Override
