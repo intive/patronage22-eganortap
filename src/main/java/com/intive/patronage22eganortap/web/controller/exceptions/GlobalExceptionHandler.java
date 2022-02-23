@@ -26,7 +26,7 @@ public class GlobalExceptionHandler implements ProblemHandling{
     public ResponseEntity<Problem> handleMethodArgumentNotValid(MethodArgumentNotValidException exception,
             NativeWebRequest request) {
         BindingResult result = exception.getBindingResult();
-        System.out.println(">>>>>>>>>>>>>> ArgumentNotValid");
+
         Problem problem = Problem.builder()
                 .with(TIMESTAMP, LocalDateTime.now().toString().replace("T", " "))
                 .withTitle("Method argument not valid")
@@ -62,7 +62,7 @@ public class GlobalExceptionHandler implements ProblemHandling{
                     .withDetail(problem.getDetail())
                     .withInstance(problem.getInstance());
             problem.getParameters().forEach(builder::with);
-            System.out.println(">>>>>>>>>>>>>> DeafultProblem");
+
         }
         return new ResponseEntity<>(builder.build(), entity.getHeaders(), entity.getStatusCode());
     }
