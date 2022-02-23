@@ -8,6 +8,9 @@ import com.intive.patronage22eganortap.repository.PollRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -22,13 +25,13 @@ class RepositoryLayerTest {
     private PollRepository pollRepository;
 
     @Test
-    void shouldAddPoll() {
+    void shouldAddPoll() throws MalformedURLException {
         //given
         Poll samplePoll = Poll.builder()
                 .name("Sample Poll")
                 .description("Sample Description")
                 .email("mail@example.com")
-                .link("link")
+                .link(new URL("http://example.com"))
                 .status("status")
                 .isPublic(true)
                 .timer(123)

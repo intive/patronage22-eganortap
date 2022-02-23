@@ -3,6 +3,7 @@ package com.intive.patronage22eganortap.domain;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Poll implements Serializable {
     private LocalDate creationDate;
     private int timer;
     private LocalDate startDate;
-    private String link;
+    private URL link;
     private String status;
     private boolean isPublic;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "poll", orphanRemoval = true)
