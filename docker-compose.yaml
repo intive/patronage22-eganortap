@@ -6,11 +6,10 @@ services:
     ports:
       - "5432:5432"
     environment:
+      POSTGRES_USER: veryImportantUser
       POSTGRES_PASSWORD: superStrongPassword;
       POSTGRES_DB: patronageDb
     volumes:
-      - type: volume
-        source: patronageapp2022-postgres-data
-        target: /patronage22-eganortap
+      - ./src/main/resources:/docker-entrypoint-initdb.d/
 volumes:
-  patronageapp2022-postgres-data:
+  postgres-data:
