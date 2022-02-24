@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -38,10 +39,10 @@ public class Poll implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (Objects.equals(this, o)) return true;
+        if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         Poll poll = (Poll) o;
-        return id != null && this.id.equals(poll.getId());
+        return !Objects.isNull(this.id) && this.id.equals(poll.getId());
     }
 
     @Override

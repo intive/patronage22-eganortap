@@ -4,6 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -33,10 +34,10 @@ public class Question implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (Objects.equals(this, o)) return true;
+        if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         Question question = (Question) o;
-        return id != null && this.id.equals(question.getId());
+        return !Objects.isNull(this.id) && this.id.equals(question.getId());
     }
 
     @Override
