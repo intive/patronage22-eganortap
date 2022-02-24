@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +42,7 @@ class RepositoryLayerTest {
 
         samplePoll.setQuestions(List.of(sampleQuestion));
         UserAnswer sampleUserAnswer = UserAnswer.builder()
-                .sessionId("sessionId")
+                .sessionId(UUID.randomUUID())
                 .build();
 
         sampleQuestion.setUserAnswers(Set.of(sampleUserAnswer));
