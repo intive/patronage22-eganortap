@@ -1,10 +1,12 @@
 package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
+import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -21,7 +23,8 @@ public class UserAnswer implements Serializable {
     @SequenceGenerator(name = "user_answer_gen", sequenceName = "user_answer_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
-    private String sessionId;
+    @Type(type = "uuid-char")
+    private UUID sessionId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
