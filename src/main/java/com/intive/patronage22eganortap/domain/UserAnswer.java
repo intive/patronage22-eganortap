@@ -21,10 +21,10 @@ public class UserAnswer implements Serializable {
     @Column(updatable = false, nullable = false)
     private Long id;
     private String sessionId;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "possible_answer_id")
     private PossibleAnswer possibleAnswer;
 

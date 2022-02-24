@@ -21,7 +21,7 @@ public class PossibleAnswer implements Serializable {
     @Column(updatable = false, nullable = false)
     private Long id;
     private String content;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
 

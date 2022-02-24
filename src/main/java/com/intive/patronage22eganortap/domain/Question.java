@@ -22,7 +22,7 @@ public class Question implements Serializable {
     @Column(updatable = false, nullable = false)
     private Long id;
     private String content;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "poll_id")
     private Poll poll;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
