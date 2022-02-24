@@ -1,9 +1,6 @@
 package com.intive.patronage22eganortap;
 
-import com.intive.patronage22eganortap.domain.Poll;
-import com.intive.patronage22eganortap.domain.PossibleAnswer;
-import com.intive.patronage22eganortap.domain.Question;
-import com.intive.patronage22eganortap.domain.UserAnswer;
+import com.intive.patronage22eganortap.domain.*;
 import com.intive.patronage22eganortap.repository.PollRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +29,7 @@ class RepositoryLayerTest {
                 .description("Sample Description")
                 .email("mail@example.com")
                 .link(new URL("http://example.com"))
-                .status("status")
+                .status(PollStatus.DRAFT)
                 .isPublic(true)
                 .timer(123)
                 .startDate(LocalDate.of(2012, 12, 12))

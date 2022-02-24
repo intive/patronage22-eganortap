@@ -27,7 +27,8 @@ public class Poll implements Serializable {
     private int timer;
     private LocalDate startDate;
     private URL link;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PollStatus status;
     private boolean isPublic;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "poll", orphanRemoval = true)
     private List<Question> questions;
