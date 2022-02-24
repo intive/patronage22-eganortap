@@ -2,6 +2,7 @@ package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +13,8 @@ import java.io.Serializable;
 @Builder
 public class PossibleAnswer implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -8313903398010184420L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "possible_answer_gen")
     @SequenceGenerator(name = "possible_answer_gen", sequenceName = "possible_answer_seq")

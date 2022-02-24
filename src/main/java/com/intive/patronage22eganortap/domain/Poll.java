@@ -2,6 +2,7 @@ package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ import java.util.List;
 @Builder
 public class Poll implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 2694133040909573689L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poll_gen")
     @SequenceGenerator(name = "poll_gen", sequenceName = "poll_seq")
