@@ -1,6 +1,6 @@
 package com.intive.patronage22eganortap.web.controller;
 
-import com.intive.patronage22eganortap.model.TeamMember;
+import com.intive.patronage22eganortap.web.model.TeamMember;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

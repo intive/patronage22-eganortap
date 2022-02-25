@@ -1,4 +1,4 @@
-package com.intive.patronage22eganortap.model;
+package com.intive.patronage22eganortap.web.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
