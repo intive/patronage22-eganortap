@@ -30,7 +30,7 @@ public class Poll implements Serializable {
     private LocalDate creationDate;
     private int timer;
     private LocalDate startDate;
-    private URL link;
+    private String link;
     @Enumerated(EnumType.STRING)
     private PollStatus status;
     private boolean isPublic;
