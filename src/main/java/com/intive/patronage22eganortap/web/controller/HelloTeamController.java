@@ -7,9 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api")
 @RestController
 @Deprecated
-@Tag(name = "TeamMembers", description = "Demo endpoints") //const String
+@Tag(name = "TeamMembers", description = "Demo endpoints")
 public class HelloTeamController {
     private static final String GROUP_TAG = "TeamMembers";
     private List<TeamMember> members = createList();
@@ -31,13 +29,7 @@ public class HelloTeamController {
         return "Hello Cebularze Team:)";
     }
 
-    @Deprecated
-    @GetMapping("/members")
-    public List<TeamMember> listAll() {
-        return members;
-    }
-
-    @Deprecated
+    @Deprecated(forRemoval = true)
     @PostMapping("/members/create")
     @Operation(summary = "Adding TeamMember", tags = {GROUP_TAG})
     @ApiResponses(value = {
@@ -53,24 +45,6 @@ public class HelloTeamController {
         return member;
     }
 
-    @Deprecated
-    @DeleteMapping("members/delete/{id}")
-    public ResponseEntity<TeamMember> deleteMember(@PathVariable Long id) {
-        TeamMember memberTmp = null;
-        for (TeamMember member : members) {
-            if (member.getId() == id) {
-                members.remove(member);
-                memberTmp = member;
-                break;
-            }
-        }
-        if (memberTmp != null) {
-            return new ResponseEntity(memberTmp, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-    }
 
     public static List<TeamMember> createList() {
         List<TeamMember> tmpList = new ArrayList<>();
