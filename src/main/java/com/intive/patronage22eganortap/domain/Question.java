@@ -42,6 +42,6 @@ public class Question implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(id) * 17;
     }
 }

@@ -47,6 +47,6 @@ public class Poll implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(id) * 7;
     }
 }
