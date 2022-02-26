@@ -1,6 +1,7 @@
 package com.intive.patronage22eganortap.web.controller.exceptions;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -8,15 +9,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.zalando.problem.*;
 import org.zalando.problem.spring.web.advice.ProblemHandling;
-import org.zalando.problem.spring.web.advice.validation.ConstraintViolationProblem;
+import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;
+import org.zalando.problem.violations.ConstraintViolationProblem;
 
 import javax.annotation.Nullable;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @ControllerAdvice
-public class GlobalExceptionHandler implements ProblemHandling{
+public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTrait {
 
     private final String TIMESTAMP = "timestamp";
     private final String VIOLATIONS = "violations";
@@ -28,7 +33,6 @@ public class GlobalExceptionHandler implements ProblemHandling{
         BindingResult result = exception.getBindingResult();
 
         Problem problem = Problem.builder()
-                .with(TIMESTAMP, LocalDateTime.now().toString().replace("T", " "))
                 .withTitle("Method argument not valid")
                 .withStatus(defaultConstraintViolationStatus())
                 .with(VIOLATIONS, createViolations(result))
@@ -46,8 +50,9 @@ public class GlobalExceptionHandler implements ProblemHandling{
         if (!(problem instanceof ConstraintViolationProblem || problem instanceof DefaultProblem)) {
             return entity;
         }
+
         ProblemBuilder builder = Problem.builder()
-                .with(TIMESTAMP, LocalDateTime.now().toString())
+                .with(TIMESTAMP, LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy HH:mm:ss")))
                 .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? Problem.DEFAULT_TYPE : problem.getType())
                 .withStatus(problem.getStatus())
                 .withTitle(problem.getTitle());
@@ -73,6 +78,18 @@ public class GlobalExceptionHandler implements ProblemHandling{
                 .withTitle("Element not found")
                 .withStatus(Status.NOT_FOUND)
                 .with(MESSAGE, exception.getMessage())
+                .build();
+
+        return create(exception, problem, request);
+    }
+
+    @Override
+    public ResponseEntity<Problem> handleAccessDenied(AccessDeniedException exception, NativeWebRequest request) {
+
+        Problem problem = Problem.builder()
+                .withTitle("Access denied")
+                .withStatus(Status.FORBIDDEN)
+                .with("message", exception.getMessage())
                 .build();
 
         return create(exception, problem, request);
