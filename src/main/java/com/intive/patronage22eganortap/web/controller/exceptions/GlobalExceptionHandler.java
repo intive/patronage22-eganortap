@@ -2,6 +2,7 @@ package com.intive.patronage22eganortap.web.controller.exceptions;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -89,6 +90,17 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
         Problem problem = Problem.builder()
                 .withTitle("Access denied")
                 .withStatus(Status.FORBIDDEN)
+                .with("message", exception.getMessage())
+                .build();
+
+        return create(exception, problem, request);
+    }
+
+    @Override
+    public ResponseEntity<Problem> handleAuthentication(AuthenticationException exception, NativeWebRequest request) {
+        Problem problem = Problem.builder()
+                .withTitle("Not authorized to perform operation")
+                .withStatus(Status.UNAUTHORIZED)
                 .with("message", exception.getMessage())
                 .build();
 
