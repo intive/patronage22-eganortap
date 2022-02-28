@@ -1,5 +1,6 @@
 package com.intive.patronage22eganortap.web.controller.exceptions;
 
+import com.intive.patronage22eganortap.web.util.ActualDate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -53,7 +54,7 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
         }
 
         ProblemBuilder builder = Problem.builder()
-                .with(TIMESTAMP, LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy HH:mm:ss")))
+                .with(TIMESTAMP, ActualDate.getStandardDate())
                 .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? Problem.DEFAULT_TYPE : problem.getType())
                 .withStatus(problem.getStatus())
                 .withTitle(problem.getTitle());
@@ -68,7 +69,6 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
                     .withDetail(problem.getDetail())
                     .withInstance(problem.getInstance());
             problem.getParameters().forEach(builder::with);
-
         }
         return new ResponseEntity<>(builder.build(), entity.getHeaders(), entity.getStatusCode());
     }
@@ -80,19 +80,16 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
                 .withStatus(Status.NOT_FOUND)
                 .with(MESSAGE, exception.getMessage())
                 .build();
-
         return create(exception, problem, request);
     }
 
     @Override
     public ResponseEntity<Problem> handleAccessDenied(AccessDeniedException exception, NativeWebRequest request) {
-
         Problem problem = Problem.builder()
                 .withTitle("Access denied")
                 .withStatus(Status.FORBIDDEN)
-                .with("message", exception.getMessage())
+                .with(MESSAGE, exception.getMessage())
                 .build();
-
         return create(exception, problem, request);
     }
 
@@ -101,9 +98,8 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
         Problem problem = Problem.builder()
                 .withTitle("Not authorized to perform operation")
                 .withStatus(Status.UNAUTHORIZED)
-                .with("message", exception.getMessage())
+                .with(MESSAGE, exception.getMessage())
                 .build();
-
         return create(exception, problem, request);
     }
 }
