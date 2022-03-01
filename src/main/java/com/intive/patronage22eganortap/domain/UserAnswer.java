@@ -1,8 +1,8 @@
 package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
-import org.hibernate.annotations.Type;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -23,18 +23,19 @@ public class UserAnswer implements Serializable {
     @SequenceGenerator(name = "user_answer_gen", sequenceName = "user_answer_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
-    @Type(type = "uuid-char")
+    @NotNull
     private UUID sessionId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "possible_answer_id")
+    @NotNull
     private PossibleAnswer possibleAnswer;
 
     @Override
     public boolean equals(Object o) {
-        if (Objects.equals(this, o)) return true;
+        if (this == o) return true;
         if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         UserAnswer userAnswer = (UserAnswer) o;
         return !Objects.isNull(this.id) && this.id.equals(userAnswer.getId());
@@ -42,6 +43,6 @@ public class UserAnswer implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 19;
+        return Objects.hashCode(id) * 11;
     }
 }

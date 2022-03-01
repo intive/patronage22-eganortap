@@ -2,6 +2,7 @@ package com.intive.patronage22eganortap.domain;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -21,6 +22,7 @@ public class PossibleAnswer implements Serializable {
     @SequenceGenerator(name = "possible_answer_gen", sequenceName = "possible_answer_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
+    @NotBlank
     private String content;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
@@ -28,7 +30,7 @@ public class PossibleAnswer implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (Objects.equals(this, o)) return true;
+        if (this == o) return true;
         if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         PossibleAnswer possibleAnswer = (PossibleAnswer) o;
         return !Objects.isNull(this.id) && this.id.equals(possibleAnswer.getId());
@@ -36,6 +38,6 @@ public class PossibleAnswer implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 11;
+        return Objects.hashCode(id) * 2;
     }
 }
