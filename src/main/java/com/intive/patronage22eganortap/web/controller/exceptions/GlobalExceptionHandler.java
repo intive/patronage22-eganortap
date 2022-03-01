@@ -51,7 +51,7 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
         }
 
         ProblemBuilder builder = Problem.builder()
-                .with(DATE, DateTimeUtils.getFullIsoDate(LocalDateTime.now()))
+                .with(DATE, DateTimeUtils.formatToFullIsoDate(LocalDateTime.now()))
                 .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? Problem.DEFAULT_TYPE : problem.getType())
                 .withStatus(problem.getStatus())
                 .withTitle(problem.getTitle());

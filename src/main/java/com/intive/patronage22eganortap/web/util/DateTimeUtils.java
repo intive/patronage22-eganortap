@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @UtilityClass
-public final class DateTimeUtils {
+public class DateTimeUtils {
 
-    private static final DateTimeFormatter fullIsoFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    private final DateTimeFormatter fullIsoFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
-    public String getFullIsoDate(LocalDateTime dateTime){
+    public String formatToFullIsoDate(LocalDateTime dateTime){
         return fullIsoFormat.format(dateTime);
     }
 }
