@@ -8,8 +8,8 @@ import javax.validation.constraints.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -52,7 +52,7 @@ public class Poll implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
             mappedBy = "poll", orphanRemoval = true)
     @Size(max = 25)
-    private List<Question> questions;
+    private Set<Question> questions;
 
     @Override
     public boolean equals(Object o) {
