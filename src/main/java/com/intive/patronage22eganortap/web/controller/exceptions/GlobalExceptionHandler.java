@@ -1,6 +1,6 @@
 package com.intive.patronage22eganortap.web.controller.exceptions;
 
-import com.intive.patronage22eganortap.web.util.ActualDate;
+import com.intive.patronage22eganortap.web.util.DateTimeUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -15,17 +15,14 @@ import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;
 import org.zalando.problem.violations.ConstraintViolationProblem;
 
 import javax.annotation.Nullable;
-import java.text.DateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @ControllerAdvice
 public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTrait {
 
-    private final String TIMESTAMP = "timestamp";
+    private final String DATE = "date";
     private final String VIOLATIONS = "violations";
     private final String MESSAGE = "message";
 
@@ -54,7 +51,7 @@ public class GlobalExceptionHandler implements ProblemHandling, SecurityAdviceTr
         }
 
         ProblemBuilder builder = Problem.builder()
-                .with(TIMESTAMP, ActualDate.getStandardDate())
+                .with(DATE, DateTimeUtils.getFullIsoDate(LocalDateTime.now()))
                 .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? Problem.DEFAULT_TYPE : problem.getType())
                 .withStatus(problem.getStatus())
                 .withTitle(problem.getTitle());
