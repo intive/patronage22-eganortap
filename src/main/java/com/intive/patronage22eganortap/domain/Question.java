@@ -42,7 +42,7 @@ public class Question implements Serializable {
         if (this == o) return true;
         if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         Question question = (Question) o;
-        return !Objects.isNull(this.id) && this.id.equals(question.getId());
+        return Objects.nonNull(this.id) && this.id.equals(question.getId());
     }
 
     @Override

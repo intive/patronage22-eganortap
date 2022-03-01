@@ -33,7 +33,7 @@ public class PossibleAnswer implements Serializable {
         if (this == o) return true;
         if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
         PossibleAnswer possibleAnswer = (PossibleAnswer) o;
-        return !Objects.isNull(this.id) && this.id.equals(possibleAnswer.getId());
+        return Objects.nonNull(this.id) && this.id.equals(possibleAnswer.getId());
     }
 
     @Override
