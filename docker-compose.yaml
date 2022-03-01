@@ -9,7 +9,8 @@ services:
       POSTGRES_USER: veryImportantUser
       POSTGRES_PASSWORD: superStrongPassword;
       POSTGRES_DB: patronageDb
+      TZ: UTC
     volumes:
-      - ./src/main/resources:/docker-entrypoint-initdb.d/
+      - postgres-data:/var/lib/postgresql/data
 volumes:
   postgres-data:
