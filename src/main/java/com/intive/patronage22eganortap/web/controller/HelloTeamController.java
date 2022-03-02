@@ -1,58 +1,31 @@
 package com.intive.patronage22eganortap.web.controller;
 
-import com.intive.patronage22eganortap.web.model.TeamMember;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api")
 @RestController
 @Deprecated
 @Tag(name = "TeamMembers", description = "Demo endpoints")
 public class HelloTeamController {
-    private static final String GROUP_TAG = "TeamMembers";
-    private List<TeamMember> members = createList();
 
 
     @Deprecated(forRemoval = true)
     @GetMapping("/hello")
-    public String hello() {
-        return "Hello Cebularze Team:)";
-    }
-
-    @Deprecated(forRemoval = true)
-    @PostMapping("/members/create")
-    @Operation(summary = "Adding TeamMember", tags = {GROUP_TAG})
+    @Operation(description = "Welcome message")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Added teamMember",
-                            content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                            schema = @Schema(implementation = TeamMember.class))),
-            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
-            @ApiResponse(description = "Not Acceptable", responseCode = "406", content = @Content),
-            @ApiResponse(description = "Internal error", responseCode = "500", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Message send"),
+            @ApiResponse(responseCode = "500", description = "Internal error")
     })
-    public TeamMember create(@Valid @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody TeamMember member) {
-        members.add(member);
-        return member;
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Hello Cebularze!");
     }
-
-
-    public static List<TeamMember> createList() {
-        List<TeamMember> tmpList = new ArrayList<>();
-        TeamMember member1 = new TeamMember(1L, "Jan", "Kowalski", "karate");
-        TeamMember member2 = new TeamMember(2L, "Zbyszek", "Kowalski", "judo");
-        tmpList.add(member1);
-        tmpList.add(member2);
-        return tmpList;
-    }
-
 }
