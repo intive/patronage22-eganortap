@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Locale;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,11 +16,26 @@ public class WebLayerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenValidInput_Returns200() throws Exception {
+    public void whenValidInputAndPolishLang_Returns200() throws Exception {
         mockMvc.perform(get("/api/")
-                        .locale(Locale.forLanguageTag("pl")))
+                        .param("language", "pl"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Cześć Zespole Cebularze!"));
+    }
+
+    @Test
+    public void whenValidInputAndEnglishLang_Returns200() throws Exception {
+        mockMvc.perform(get("/api/")
+                        .param("language", "en"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello Cebularze Team:)"));
+    }
+
+    @Test
+    public void whenValidInputAndDefaultLang_Returns200() throws Exception {
+        mockMvc.perform(get("/api/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello Cebularze Team:)"));
     }
 
 }
