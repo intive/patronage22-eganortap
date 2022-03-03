@@ -31,8 +31,7 @@ public class PossibleAnswer implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
-        PossibleAnswer possibleAnswer = (PossibleAnswer) o;
+        if (!(o instanceof PossibleAnswer possibleAnswer)) return false;
         return Objects.nonNull(this.id) && this.id.equals(possibleAnswer.getId());
     }
 

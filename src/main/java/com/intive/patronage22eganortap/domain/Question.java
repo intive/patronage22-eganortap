@@ -40,8 +40,7 @@ public class Question implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
-        Question question = (Question) o;
+        if (!(o instanceof Question question)) return false;
         return Objects.nonNull(this.id) && this.id.equals(question.getId());
     }
 

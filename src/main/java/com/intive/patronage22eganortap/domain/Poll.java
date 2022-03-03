@@ -57,8 +57,7 @@ public class Poll implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (Objects.isNull(o) || !this.getClass().equals(o.getClass())) return false;
-        Poll poll = (Poll) o;
+        if (!(o instanceof Poll poll)) return false;
         return Objects.nonNull(this.id) && this.id.equals(poll.getId());
     }
 
