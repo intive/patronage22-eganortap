@@ -46,6 +46,6 @@ public class Question implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 5;
+        return Objects.hashCode(id) * PrimeConstants.QUESTION_HASH_PRIME;
     }
 }

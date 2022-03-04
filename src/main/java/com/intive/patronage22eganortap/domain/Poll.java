@@ -63,6 +63,6 @@ public class Poll implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 7;
+        return Objects.hashCode(id) * PrimeConstants.POLL_HASH_PRIME;
     }
 }

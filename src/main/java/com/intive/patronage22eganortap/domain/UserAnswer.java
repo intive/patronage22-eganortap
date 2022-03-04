@@ -42,6 +42,7 @@ public class UserAnswer implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 11;
+        return Objects.hashCode(id) * PrimeConstants.USER_ANSWER_HASH_PRIME;
     }
+
 }

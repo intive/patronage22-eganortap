@@ -37,6 +37,6 @@ public class PossibleAnswer implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id) * 2;
+        return Objects.hashCode(id) * PrimeConstants.POSSIBLE_ANSWER_HASH_PRIME;
     }
 }
