@@ -19,7 +19,7 @@ public class PossibleAnswer implements Serializable {
     private static final long serialVersionUID = -8313903398010184420L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "possible_answer_gen")
-    @SequenceGenerator(name = "possible_answer_gen", sequenceName = "possible_answer_seq")
+    @SequenceGenerator(name = "possible_answer_gen", sequenceName = "patronage_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
     @NotBlank

@@ -23,7 +23,7 @@ public class Poll implements Serializable {
     private static final long serialVersionUID = 2694133040909573689L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "poll_gen")
-    @SequenceGenerator(name = "poll_gen", sequenceName = "poll_seq")
+    @SequenceGenerator(name = "poll_gen", sequenceName = "patronage_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
     @Size(max = 25)

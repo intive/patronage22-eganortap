@@ -20,7 +20,7 @@ public class UserAnswer implements Serializable {
     private static final long serialVersionUID = -1437565072919849496L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_answer_gen")
-    @SequenceGenerator(name = "user_answer_gen", sequenceName = "user_answer_seq")
+    @SequenceGenerator(name = "user_answer_gen", sequenceName = "patronage_seq")
     @Column(updatable = false, nullable = false)
     private Long id;
     @NotNull
