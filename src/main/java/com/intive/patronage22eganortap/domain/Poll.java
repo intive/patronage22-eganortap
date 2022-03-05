@@ -40,7 +40,7 @@ public class Poll implements Serializable {
     private LocalDateTime creationDate;
     @NotNull
     @Min(0)
-    private byte timer;
+    private Integer timer;
     @NotNull
     private LocalDateTime startDate;
     @URL

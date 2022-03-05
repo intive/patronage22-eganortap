@@ -1,4 +1,4 @@
-package com.intive.patronage22eganortap.configuration;
+package com.intive.patronage22eganortap.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.Setter;
