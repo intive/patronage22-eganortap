@@ -19,7 +19,7 @@ public class WebLayerTest {
     public void whenValidInput_Returns200() throws Exception {
         mockMvc.perform(get("/api/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello Cebularze Team:)"));
+                .andExpect(content().string("Hello Cebularze!"));
     }
 
 }
