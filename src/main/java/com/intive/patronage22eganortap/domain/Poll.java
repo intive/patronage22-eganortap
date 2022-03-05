@@ -33,14 +33,14 @@ public class Poll implements Serializable {
     @NotBlank
     private String description;
     @Email
-    @NotBlank
     private String email;
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
     private LocalDateTime creationDate;
     @NotNull
     @Min(0)
-    private int timer;
+    private byte timer;
+    @NotNull
     private LocalDateTime startDate;
     @URL
     @NotBlank
