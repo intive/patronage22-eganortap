@@ -1,8 +1,11 @@
 package com.intive.patronage22eganortap.web.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.intive.patronage22eganortap.web.domain.PollDto;
+import com.intive.patronage22eganortap.web.domain.UserAnswerDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/api")
 @RestController
