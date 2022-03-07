@@ -39,19 +39,23 @@ public class Poll implements Serializable {
     @Column(updatable = false, nullable = false)
     private LocalDateTime creationDate;
     @NotNull
-    @Min(0)
+    @PositiveOrZero
     private Integer timer;
     @NotNull
+    @FutureOrPresent
     private LocalDateTime startDate;
     @URL
     @NotBlank
     private String link;
     @Enumerated(EnumType.STRING)
     @NotNull
-    private PollStatus status;
-    private boolean isPublic;
+    @Builder.Default
+    private PollStatus status = PollStatus.DRAFT;
+    @NotNull
+    @Builder.Default
+    private Boolean isPublic = false;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
-            mappedBy = "poll", orphanRemoval = true)
+            mappedBy = "poll")
     @Size(max = 25)
     private Set<Question> questions;
 

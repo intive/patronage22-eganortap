@@ -29,10 +29,10 @@ public class Question implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "poll_id")
     private Poll poll;
-    @OneToMany(mappedBy = "question", orphanRemoval = true)
+    @OneToMany(mappedBy = "question")
     private Set<UserAnswer> userAnswers;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE},
-            mappedBy = "question", orphanRemoval = true)
+            mappedBy = "question")
     @Size(min = 2, max = 10)
     private Set<PossibleAnswer> possibleAnswers;
 
