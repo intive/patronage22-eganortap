@@ -35,7 +35,6 @@ public class WebLayerTest {
     public void whenValidInputAndDefaultLang_Returns200() throws Exception {
         mockMvc.perform(get("/api/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello Cebularze Team:)"));
+                .andExpect(content().string("Cześć Zespole Cebularze!"));
     }
-
 }
