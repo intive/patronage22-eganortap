@@ -11,5 +11,4 @@ public class Patronage22EganortapApplication {
     public static void main(String[] args) {
         SpringApplication.run(Patronage22EganortapApplication.class, args);
     }
-
 }
