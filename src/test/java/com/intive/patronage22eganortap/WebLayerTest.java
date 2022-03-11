@@ -16,6 +16,8 @@ public class WebLayerTest {
     private MockMvc mockMvc;
 
     @Test
+    public void whenValidInput_Returns200() throws Exception {
+        mockMvc.perform(get("/api/hello"))
     public void whenValidInputAndPolishLang_Returns200() throws Exception {
         mockMvc.perform(get("/api/")
                         .param("language", "pl"))
