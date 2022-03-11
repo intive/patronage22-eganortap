@@ -16,9 +16,7 @@ public class WebLayerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenValidInput_Returns200() throws Exception {
-        mockMvc.perform(get("/api/hello"))
-    public void whenValidInputAndPolishLang_Returns200() throws Exception {
+    public void shouldDisplayPolishMessageWhenLanguagePl() throws Exception {
         mockMvc.perform(get("/api/")
                         .param("language", "pl"))
                 .andExpect(status().isOk())
@@ -26,7 +24,7 @@ public class WebLayerTest {
     }
 
     @Test
-    public void whenValidInputAndEnglishLang_Returns200() throws Exception {
+    public void shouldDisplayEnglishMessageWhenLanguagePl() throws Exception {
         mockMvc.perform(get("/api/")
                         .param("language", "en"))
                 .andExpect(status().isOk())
@@ -34,9 +32,9 @@ public class WebLayerTest {
     }
 
     @Test
-    public void whenValidInputAndDefaultLang_Returns200() throws Exception {
+    public void shouldDisplayEnglishMessageWhenLanguageNotSet() throws Exception {
         mockMvc.perform(get("/api/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Cześć Zespole Cebularze!"));
+                .andExpect(content().string("Hello Cebularze Team:)"));
     }
 }
