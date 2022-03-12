@@ -26,7 +26,7 @@ public class WebLayerTest {
     }
 
     @Test
-    public void shouldDisplayEnglishMessageWhenLanguagePl() throws Exception {
+    public void shouldDisplayEnglishMessageWhenLanguageEn() throws Exception {
         mockMvc.perform(get("/api/")
                         .param("language", "en"))
                 .andExpect(status().isOk())
