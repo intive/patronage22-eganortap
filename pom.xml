@@ -159,7 +159,7 @@
                         <id>default-prepare-agent-integration</id>
                         <phase>pre-integration-test</phase>
                         <goals>
-                            <goal>prepare-agent</goal>
+                            <goal>prepare-agent-integration</goal>
                         </goals>
                     </execution>
                     <execution>
