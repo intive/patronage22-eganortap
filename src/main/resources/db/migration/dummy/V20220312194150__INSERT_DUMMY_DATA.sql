@@ -10,13 +10,13 @@ VALUES((SELECT  id FROM public.question WHERE question_content = 'Ile posiłków
       ((SELECT id FROM public.question WHERE question_content = 'Ile posiłków jesz dziennie?'), 'poniżej 3');
 
 INSERT INTO question(poll_id, question_content)
-VALUES ((SELECT id FROM public.poll WHERE name = 'Zdrowe odżywianie'),'Które posiłki jesz zazwyczaj?');
+VALUES ((SELECT id FROM public.poll WHERE name = 'Zdrowe odżywianie'),'Ile razy w tygodniu uprawiasz sport?');
 
 INSERT INTO possible_answers(question_id, possible_answers_content)
-VALUES((SELECT  id FROM public.question WHERE question_content = 'Które posiłki jesz zazwyczaj?'),'śniadanie'),
-      ((SELECT  id FROM public.question WHERE question_content = 'Które posiłki jesz zazwyczaj?'),'obiad'),
-      ((SELECT  id FROM public.question WHERE question_content = 'Które posiłki jesz zazwyczaj?'),'kolacje');
+VALUES((SELECT  id FROM public.question WHERE question_content = 'Ile razy w tygodniu uprawiasz sport?'),'wcale'),
+      ((SELECT  id FROM public.question WHERE question_content = 'Ile razy w tygodniu uprawiasz sport?'),'pomiędzy 1 a 3 tygodniowo'),
+      ((SELECT  id FROM public.question WHERE question_content = 'Ile razy w tygodniu uprawiasz sport?'),'5x w tyg');
 
 INSERT INTO user_answers(possible_answers_id, question_id, user_answers_content)
 VALUES ((SELECT  id FROM public.possible_answers WHERE possible_answers_content = '3 posiłki'),(SELECT  id FROM public.question WHERE question_content = 'Ile posiłków jesz dziennie?'),'3 posiłki'),
-       ((SELECT  id FROM public.possible_answers WHERE possible_answers_content = 'obiad'),(SELECT  id FROM public.question WHERE question_content = 'Które posiłki jesz zazwyczaj?'),' zazwyczaj tylko obiad');
+       ((SELECT  id FROM public.possible_answers WHERE possible_answers_content = 'pomiędzy 1 a 3 tygodniowo'),(SELECT  id FROM public.question WHERE question_content = 'Ile razy w tygodniu uprawiasz sport?'),' zazwyczaj tylko 3 razy');
