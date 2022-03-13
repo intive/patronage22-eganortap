@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    show-sql: false
+
+  flyway:
+    locations:
+      - classpath:db/migration/scheme
